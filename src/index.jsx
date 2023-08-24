@@ -16,14 +16,14 @@ const ModalWrapper = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: #fff;
+  background-color: ##dde7f1;
   padding: 50px;
   z-index: 1000;
   display: flex;
   flex-direction: column;
   gap: 30px;
   border-radius: 20px;
-  border: 10px solid cornflowerblue;
+  border: 10px solid #334662;
 `;
 
 const CloseButton = styled.button`
@@ -33,10 +33,11 @@ const CloseButton = styled.button`
   padding: 1rem 2rem;
   margin: 0;
   text-decoration: none;
-  background: cornflowerblue;
+  background: #334662;
   color: #ffffff;
   font-family: sans-serif;
   font-size: 1rem;
+  font-weight: 600;
   line-height: 1;
   cursor: pointer;
   text-align: center;
