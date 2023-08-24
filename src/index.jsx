@@ -16,7 +16,7 @@ const ModalWrapper = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: ##dde7f1;
+  background-color: #dde7f1;
   padding: 50px;
   z-index: 1000;
   display: flex;
