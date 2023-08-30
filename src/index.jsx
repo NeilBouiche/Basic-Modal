@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
+// Styling with styled-components
 const ModalOverlay = styled.div`
   position: fixed;
   top: 0;
@@ -46,6 +47,7 @@ const CloseButton = styled.button`
   -moz-appearance: none;
 `;
 
+// Modal Component
 export const Modal = ({ isOpen, onClose, children }) => {
   if (!isOpen) {
     return null;
