@@ -21,7 +21,7 @@ const ModalContent = styled.div`
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
 `;
 
-const Modal = ({ isOpen, onClose, children }) => {
+export const Modal = ({ isOpen, onClose, children }) => {
   const modalRef = useRef(null);
 
   const handleClickOutside = (e) => {
@@ -52,5 +52,3 @@ const Modal = ({ isOpen, onClose, children }) => {
     </ModalWrapper>
   );
 };
-
-export default Modal;
