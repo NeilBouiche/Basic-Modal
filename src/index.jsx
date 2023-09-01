@@ -106,8 +106,8 @@ export const Modal = ({ isOpen, onClose, children }) => {
 
   return (
     <div>
-      <ModalOverlay ref={modalRef} />
-      <ModalWrapper>
+      <ModalOverlay />
+      <ModalWrapper ref={modalRef}>
         {children}
         <CloseButton onClick={onClose}>Close</CloseButton>
       </ModalWrapper>
