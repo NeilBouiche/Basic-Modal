@@ -83,12 +83,12 @@ export const Modal = ({ isOpen, onClose, children }) => {
   }
 
   return (
-    <>
-      <ModalOverlay onClick={onClose} />
+    <div onClick={onClose}>
+      <ModalOverlay />
       <ModalWrapper>
         {children}
         <CloseButton onClick={onClose}>Close</CloseButton>
       </ModalWrapper>
-    </>
+    </div>
   );
 };
