@@ -1,6 +1,6 @@
 {
   "name": "alt_basic-modal",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "A simple react modal component to reduce boilettplate code !",
   "main": "dist/index.umd.js",
   "module": "dist/index.mjs",
