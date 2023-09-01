@@ -34,10 +34,6 @@ const ModalContent = styled.div`
   gap: 30px;
   border-radius: 20px;
   border: 10px solid #334662;
-  background: white;
-  padding: 20px;
-  color: purple;
-  border-radius: 5px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
 `;
 
