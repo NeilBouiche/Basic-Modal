@@ -83,26 +83,29 @@ const CloseButton = styled.button`
  * </Modal>
  */
 export const Modal = ({ isOpen, onClose, children }) => {
-  const modalOverlayRef = useRef(null);
+  const modalWrapperRef = useRef(null);
 
   useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (modalOverlayRef.current === event.target) {
+    const handleOutsideClick = (event) => {
+      if (
+        modalWrapperRef.current &&
+        !modalWrapperRef.current.contains(event.target)
+      ) {
         onClose();
       }
     };
 
     if (isOpen) {
-      modalOverlayRef.current.addEventListener("click", handleClickOutside);
+      // Add event listener when the modal is open
+      document.addEventListener("mousedown", handleOutsideClick);
+    } else {
+      // Remove event listener when the modal is closed
+      document.removeEventListener("mousedown", handleOutsideClick);
     }
 
     return () => {
-      if (isOpen) {
-        modalOverlayRef.current.removeEventListener(
-          "click",
-          handleClickOutside
-        );
-      }
+      // Clean up the event listener when the component unmounts or when isOpen changes
+      document.removeEventListener("mousedown", handleOutsideClick);
     };
   }, [isOpen, onClose]);
 
@@ -112,8 +115,8 @@ export const Modal = ({ isOpen, onClose, children }) => {
 
   return (
     <div>
-      <ModalOverlay ref={modalOverlayRef} />
-      <ModalWrapper>
+      <ModalOverlay />
+      <ModalWrapper ref={modalWrapperRef}>
         {children}
         <CloseButton onClick={onClose}>Close</CloseButton>
       </ModalWrapper>
