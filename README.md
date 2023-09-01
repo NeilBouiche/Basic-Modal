@@ -46,7 +46,9 @@ Similarly, you can extend `ModalOverlay` and `CloseButton` to customize their st
 `alt_basic-modal` has the following dependencies:
 
 [React](https://react.dev/): Facebook open-source Javascript library.
+
 [Styled-components](https://styled-components.com/): A library that allows you to write CSS in JS while building custom components in React.
+
 [Vite](https://vitejs.dev/): Vite is a frontend tool that is used for building fast and optimized web applications.
 
 Please ensure these dependencies are installed in your project.
