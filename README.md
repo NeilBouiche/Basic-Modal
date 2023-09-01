@@ -27,19 +27,19 @@ import Modal from "alt_basic-modal";
 
 `alt_basic-modal` uses `styled-components` for styling, which allows you to easily customize the styles of the modal components.
 
-The modal consists of three main styled components: `ModalOverlay`, `ModalWrapper`, and `CloseButton`. You can extend these components to customize their styles.
+The modal consists of three main styled components: `ModalWrapper`, `ModalContent`, and `CloseButton`. You can extend these components to customize their styles.
 
 Here's an example of how you can extend the `ModalWrapper` to change its background color:
 
 ```javascript
-const CustomModalWrapper = styled(ModalWrapper)`
+const CustomModalWrapper = styled(ModalContent)`
   background-color: #yourColor;
 `;
 
 // Then use CustomModalWrapper in your component
 ```
 
-Similarly, you can extend `ModalOverlay` and `CloseButton` to customize their styles.
+Similarly, you can extend `ModalWrapper` and `CloseButton` to customize their styles.
 
 # Dependencies
 
