@@ -82,13 +82,16 @@ export const Modal = ({ isOpen, onClose, children }) => {
     return null;
   }
 
+  const handleWrapperClick = (event) => {
+    event.stopPropagation();
+  };
+
   return (
-    <div onClick={onClose}>
-      <ModalOverlay />
-      <ModalWrapper>
+    <ModalOverlay onClick={onClose}>
+      <ModalWrapper onClick={handleWrapperClick}>
         {children}
         <CloseButton onClick={onClose}>Close</CloseButton>
       </ModalWrapper>
-    </div>
+    </ModalOverlay>
   );
 };
