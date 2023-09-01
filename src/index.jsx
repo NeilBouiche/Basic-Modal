@@ -83,28 +83,14 @@ const CloseButton = styled.button`
  * </Modal>
  */
 export const Modal = ({ isOpen, onClose, children }) => {
-  const ref = useRef();
-
-  useEffect(() => {
-    const checkIfClickedOutside = (e) => {
-      if (ref.current && !ref.current.contains(e.target)) {
-        onClose();
-      }
-    };
-    document.addEventListener("click", checkIfClickedOutside);
-    return () => {
-      document.removeEventListener("click", checkIfClickedOutside);
-    };
-  }, [onClose]);
-
   if (!isOpen) {
     return null;
   }
 
   return (
     <>
-      <ModalOverlay />
-      <ModalWrapper ref={ref}>
+      <ModalOverlay onClick={onClose} />
+      <ModalWrapper>
         {children}
         <CloseButton onClick={onClose}>Close</CloseButton>
       </ModalWrapper>
