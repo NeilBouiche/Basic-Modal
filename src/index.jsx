@@ -84,9 +84,11 @@ const CloseButton = styled.button`
  */
 export const Modal = ({ isOpen, onClose, children }) => {
   const ref = useRef();
+  const overlayRef = useRef();
+
   useEffect(() => {
     const checkIfClickedOutside = (e) => {
-      if (ref.current && !ref.current.contains(e.target)) {
+      if (e.target === overlayRef.current) {
         onClose();
       }
     };
@@ -102,7 +104,7 @@ export const Modal = ({ isOpen, onClose, children }) => {
 
   return (
     <div>
-      <ModalOverlay />
+      <ModalOverlay ref={overlayRef} />
       <ModalWrapper ref={ref}>
         {children}
         <CloseButton onClick={onClose}>Close</CloseButton>
