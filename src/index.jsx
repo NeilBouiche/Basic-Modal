@@ -6,6 +6,19 @@ import React, { useRef, useEffect } from "react";
 import styled from "styled-components";
 
 /**
+ * Modal container styled component.
+ * @component
+ */
+const ModalContainer = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+`;
+
+/**
  * Modal overlay styled component.
  * @component
  */
@@ -115,14 +128,14 @@ export const Modal = ({ isOpen, onClose, children }) => {
   }
 
   return (
-    <div>
+    <ModalContainer ref={modalRef}>
       <ModalOverlay />
       <ModalWrapper>
-        <ModalContent ref={modalRef}>
+        <ModalContent>
           {children}
           <CloseButton onClick={onClose}>Close</CloseButton>
         </ModalContent>
       </ModalWrapper>
-    </div>
+    </ModalContainer>
   );
 };
