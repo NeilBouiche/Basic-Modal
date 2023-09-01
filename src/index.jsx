@@ -6,19 +6,6 @@ import React, { useRef, useEffect } from "react";
 import styled from "styled-components";
 
 /**
- * Modal container styled component.
- * @component
- */
-const ModalContainer = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 1000;
-`;
-
-/**
  * Modal overlay styled component.
  * @component
  */
@@ -76,16 +63,6 @@ const CloseButton = styled.button`
 `;
 
 /**
- * Modal container styled component.
- * @component
- */
-const ModalContent = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-`;
-
-/**
  * Modal component for displaying a modal overlay.
  *
  * @param {Object} props - The component props.
@@ -106,20 +83,26 @@ const ModalContent = styled.div`
  * </Modal>
  */
 export const Modal = ({ isOpen, onClose, children }) => {
-  const modalRef = useRef(null);
+  const modalOverlayRef = useRef(null);
+
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (modalRef.current && !modalRef.current.contains(event.target)) {
+      if (modalOverlayRef.current === event.target) {
         onClose();
       }
     };
 
     if (isOpen) {
-      document.addEventListener("click", handleClickOutside);
+      modalOverlayRef.current.addEventListener("click", handleClickOutside);
     }
 
     return () => {
-      document.removeEventListener("click", handleClickOutside);
+      if (isOpen) {
+        modalOverlayRef.current.removeEventListener(
+          "click",
+          handleClickOutside
+        );
+      }
     };
   }, [isOpen, onClose]);
 
@@ -128,14 +111,12 @@ export const Modal = ({ isOpen, onClose, children }) => {
   }
 
   return (
-    <ModalContainer ref={modalRef}>
-      <ModalOverlay />
+    <div>
+      <ModalOverlay ref={modalOverlayRef} />
       <ModalWrapper>
-        <ModalContent>
-          {children}
-          <CloseButton onClick={onClose}>Close</CloseButton>
-        </ModalContent>
+        {children}
+        <CloseButton onClick={onClose}>Close</CloseButton>
       </ModalWrapper>
-    </ModalContainer>
+    </div>
   );
 };
