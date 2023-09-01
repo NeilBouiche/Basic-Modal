@@ -63,6 +63,16 @@ const CloseButton = styled.button`
 `;
 
 /**
+ * Modal container styled component.
+ * @component
+ */
+const ModalContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+`;
+
+/**
  * Modal component for displaying a modal overlay.
  *
  * @param {Object} props - The component props.
@@ -107,9 +117,11 @@ export const Modal = ({ isOpen, onClose, children }) => {
   return (
     <div>
       <ModalOverlay />
-      <ModalWrapper ref={modalRef}>
-        {children}
-        <CloseButton onClick={onClose}>Close</CloseButton>
+      <ModalWrapper>
+        <ModalContent ref={modalRef}>
+          {children}
+          <CloseButton onClick={onClose}>Close</CloseButton>
+        </ModalContent>
       </ModalWrapper>
     </div>
   );
