@@ -72,11 +72,6 @@ const CloseButton = styled.button`
  *
  * @returns {JSX.Element|null} The modal component.
  *
- * @description
- * This component uses a useEffect hook to handle clicks outside the modal. The hook registers an event listener
- * when the modal is open and removes it when the modal is closed. The event listener calls the onClose function
- * if the click event target is outside the modal.
- *
  * @example
  * <Modal isOpen={isOpen} onClose={handleClose}>
  *   <p>Modal content</p>
